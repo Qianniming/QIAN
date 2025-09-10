@@ -1,0 +1,11 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wl1600Gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#wl1600Gradient)"/>
+  <text x="200" y="140" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">WL-1600 Studio</text>
+  <text x="200" y="165" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Professional Case</text>
+</svg>

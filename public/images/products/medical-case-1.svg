@@ -1,0 +1,11 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="300" fill="#f3f4f6"/>
+<rect x="50" y="70" width="300" height="160" rx="10" fill="#ffffff"/>
+<rect x="55" y="75" width="290" height="150" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+<rect x="180" y="90" width="40" height="40" rx="5" fill="#dc2626"/>
+<rect x="190" y="100" width="20" height="8" rx="2" fill="#ffffff"/>
+<rect x="196" y="94" width="8" height="20" rx="2" fill="#ffffff"/>
+<circle cx="120" cy="180" r="15" fill="#3b82f6"/>
+<circle cx="280" cy="180" r="15" fill="#3b82f6"/>
+<text x="200" y="270" fill="#374151" font-size="16" font-family="Arial" text-anchor="middle">Medical Case</text>
+</svg>
