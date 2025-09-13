@@ -17,8 +17,8 @@ const heroImages = [
   },
   {
     url: '/images/hero-2.jpg', // 【修改入口】第二张图片路径
-    title: 'Professional Grade Protection', // 【修改入口】第二张图的主标题
-    subtitle: 'Waterproof & Dustproof Solutions' // 【修改入口】第二张图的副标题
+    title: '', // 【修改入口】第二张图的主标题
+    subtitle: '' // 【修改入口】第二张图的副标题
   },
   {
     url: '/images/hero-3.jpg', // 【修改入口】第三张图片路径
