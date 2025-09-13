@@ -76,14 +76,19 @@ export async function POST(request: NextRequest) {
         })
       }
       
-      // 【重点】创建邮件发送器 - 配置SMTP连接
+      // 【重点】创建邮件发送器 - 配置163邮箱SMTP连接
+      const isPort465 = smtpPort === 465
+      
       const transporter = nodemailer.createTransport({
         host: smtpHost, // SMTP服务器地址
         port: smtpPort, // SMTP端口
-        secure: false, // 使用TLS而非SSL
+        secure: isPort465, // 465端口使用SSL，587使用TLS
         auth: {
           user: smtpUser, // 发送邮箱账号
           pass: emailPassword // 发送邮箱密码
+        },
+        tls: {
+          rejectUnauthorized: false // 允许自签名证书
         }
       })
       

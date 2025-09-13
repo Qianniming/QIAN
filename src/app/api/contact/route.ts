@@ -22,22 +22,30 @@ interface ContactFormData {
 // 【重点】创建邮件发送器 - 配置SMTP服务器连接
 // 支持Gmail和其他SMTP服务器，用于发送通知邮件
 const createTransporter = () => {
-  // 【重点】兼容性处理 - 支持两种环境变量名称
-  const emailPassword = process.env.EMAIL_PASSWORD || process.env.EMAIL_PASS
+  // 【重点】兼容性处理 - 支持多种环境变量名称
+  const emailUser = process.env.SMTP_USER || process.env.EMAIL_USER
+  const emailPassword = process.env.SMTP_PASS || process.env.EMAIL_PASSWORD || process.env.EMAIL_PASS
+  const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com'
+  const smtpPort = parseInt(process.env.SMTP_PORT || '587')
   
   // 【重点】配置检查 - 确保邮件配置完整
-  if (!process.env.EMAIL_USER || !emailPassword) {
-    throw new Error('Email configuration missing. Please set EMAIL_USER and EMAIL_PASSWORD environment variables.')
+  if (!emailUser || !emailPassword) {
+    throw new Error('Email configuration missing. Please set SMTP_USER and SMTP_PASS environment variables.')
   }
   
-  // 【重点】创建SMTP传输器 - 配置邮件服务器连接参数
+  // 【重点】创建163邮箱SMTP传输器 - 适配网易163邮箱配置
+  const isPort465 = smtpPort === 465
+  
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com', // SMTP服务器地址，默认Gmail
-    port: parseInt(process.env.SMTP_PORT || '587'), // SMTP端口，默认587（TLS）
-    secure: false, // 使用TLS而非SSL
+    host: smtpHost, // SMTP服务器地址
+    port: smtpPort, // SMTP端口
+    secure: isPort465, // 465端口使用SSL，587使用TLS
     auth: { // 认证信息
-      user: process.env.EMAIL_USER, // 发送邮箱账号
+      user: emailUser, // 发送邮箱账号
       pass: emailPassword // 发送邮箱密码或应用密码
+    },
+    tls: {
+      rejectUnauthorized: false // 允许自签名证书
     }
   })
 }
@@ -230,15 +238,15 @@ export async function POST(request: NextRequest) {
     
     // 【重点】准备管理员通知邮件 - 将客户咨询发送给管理员
     const adminEmailOptions = {
-      from: process.env.SMTP_FROM || process.env.EMAIL_USER, // 发件人邮箱
-      to: process.env.SMTP_TO || process.env.ADMIN_EMAIL || process.env.EMAIL_USER, // 管理员邮箱
+      from: process.env.SMTP_FROM || process.env.SMTP_USER || process.env.EMAIL_USER, // 发件人邮箱
+      to: process.env.SMTP_TO || process.env.ADMIN_EMAIL || process.env.SMTP_USER || process.env.EMAIL_USER, // 管理员邮箱
       subject: `New Inquiry from ${sanitizedData.name} - WELL-LI Cases`, // 邮件主题
       html: createAdminEmailTemplate(sanitizedData as ContactFormData) // HTML邮件内容
     }
     
     // 【重点】准备客户确认邮件 - 向客户发送确认收到咨询的邮件
     const customerEmailOptions = {
-      from: process.env.SMTP_FROM || process.env.EMAIL_USER, // 发件人邮箱
+      from: process.env.SMTP_FROM || process.env.SMTP_USER || process.env.EMAIL_USER, // 发件人邮箱
       to: sanitizedData.email, // 客户邮箱
       subject: 'Thank you for your inquiry - WELL-LI Cases', // 邮件主题
       html: createCustomerEmailTemplate(sanitizedData as ContactFormData) // HTML邮件内容
