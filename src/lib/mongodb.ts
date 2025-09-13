@@ -49,11 +49,11 @@ function initializeClient(): Promise<MongoClient> {
       _mongoClientPromise?: Promise<MongoClient>
     }
 
-    if (!globalWithMongo._mongoClientPromise) {
+    if (!_globalWithMongo._mongoClientPromise) {
       client = new MongoClient(uri, options) // 创建新的MongoDB客户端
-      globalWithMongo._mongoClientPromise = client.connect() // 建立连接并保存到全局变量
+      _globalWithMongo._mongoClientPromise = client.connect() // 建立连接并保存到全局变量
     }
-    clientPromise = globalWithMongo._mongoClientPromise // 使用已存在的连接
+    clientPromise = _globalWithMongo._mongoClientPromise // 使用已存在的连接
   } else {
     // 【重点】生产环境连接策略 - 直接创建连接，不使用全局变量
     client = new MongoClient(uri, options)
