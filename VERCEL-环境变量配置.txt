@@ -22,7 +22,7 @@ SMTP_FROM
 76682480@qq.com
 
 SMTP_TO
-admin@well-li.com
+76682480@qq.com
 
 ======== 安全配置 ========
 NEXTAUTH_SECRET
