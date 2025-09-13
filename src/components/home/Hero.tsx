@@ -22,8 +22,8 @@ const heroImages = [
   },
   {
     url: '/images/hero-3.jpg', // 【修改入口】第三张图片路径
-    title: 'Custom Manufacturing Excellence', // 【修改入口】第三张图的主标题
-    subtitle: 'Tailored Cases for Every Industry' // 【修改入口】第三张图的副标题
+    title: '', // 【修改入口】第三张图的主标题
+    subtitle: '' // 【修改入口】第三张图的副标题
   }
 ]
 
