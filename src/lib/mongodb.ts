@@ -3,52 +3,77 @@
 
 import { MongoClient, Db, MongoClientOptions } from 'mongodb' // MongoDB官方驱动
 
-// 【重点】环境变量检查 - 确保数据库连接字符串存在
-if (!process.env.MONGODB_URI) {
-  throw new Error('Please add your MongoDB URI to .env.local') // 缺少数据库连接字符串
+// 【重点】环境变量检查函数 - 延迟检查，避免模块加载时报错
+function checkEnvironment(): string {
+  if (!process.env.MONGODB_URI) {
+    throw new Error('Please add your MongoDB URI to .env.local') // 缺少数据库连接字符串
+  }
+  return process.env.MONGODB_URI
 }
-
-// 【重点】数据库连接配置 - 从环境变量获取连接字符串
-const uri = process.env.MONGODB_URI
-// 【重点】连接选项配置 - 优化数据库连接性能和稳定性
+// 【重点】连接选项配置 - 优化数据库连接性能和稳定性，解决SSL问题
 const options: MongoClientOptions = {
   maxPoolSize: 10, // 最大连接池大小：10个并发连接
   serverSelectionTimeoutMS: 5000, // 服务器选择超时：5秒
   socketTimeoutMS: 45000, // Socket超时：45秒
   family: 4, // 使用IPv4，跳过IPv6尝试（提高连接速度）
+  
+  // SSL/TLS配置 - 解决SSL连接问题
+  tls: true, // 启用TLS
+  tlsAllowInvalidCertificates: false, // 严格证书验证
+  tlsAllowInvalidHostnames: false, // 严格主机名验证
+  
+  // 连接重试配置
+  retryWrites: true, // 启用写操作重试
+  retryReads: true, // 启用读操作重试
+  
+  // 认证配置
+  authSource: 'admin', // 认证数据库
 }
 
 // 【重点】客户端连接管理 - 根据环境采用不同的连接策略
 let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
-if (process.env.NODE_ENV === 'development') {
-  // 【重点】开发环境连接策略 - 使用全局变量避免热重载时重复连接
-  // 在开发模式下，使用全局变量保存连接，避免HMR（热模块替换）导致的重复连接
-  let globalWithMongo = global as typeof globalThis & {
-    _mongoClientPromise?: Promise<MongoClient>
+// 改为函数形式，延迟初始化
+function initializeClient(): Promise<MongoClient> {
+  if (clientPromise) {
+    return clientPromise
   }
+  
+  const uri = checkEnvironment() // 在需要时才检查环境变量
+  
+  if (process.env.NODE_ENV === 'development') {
+    // 【重点】开发环境连接策略 - 使用全局变量避免热重载时重复连接
+    // 在开发模式下，使用全局变量保存连接，避免HMR（热模块替换）导致的重复连接
+    let globalWithMongo = global as typeof globalThis & {
+      _mongoClientPromise?: Promise<MongoClient>
+    }
 
-  if (!globalWithMongo._mongoClientPromise) {
-    client = new MongoClient(uri, options) // 创建新的MongoDB客户端
-    globalWithMongo._mongoClientPromise = client.connect() // 建立连接并保存到全局变量
+    if (!globalWithMongo._mongoClientPromise) {
+      client = new MongoClient(uri, options) // 创建新的MongoDB客户端
+      globalWithMongo._mongoClientPromise = client.connect() // 建立连接并保存到全局变量
+    }
+    clientPromise = globalWithMongo._mongoClientPromise // 使用已存在的连接
+  } else {
+    // 【重点】生产环境连接策略 - 直接创建连接，不使用全局变量
+    client = new MongoClient(uri, options)
+    clientPromise = client.connect()
   }
-  clientPromise = globalWithMongo._mongoClientPromise // 使用已存在的连接
-} else {
-  // 【重点】生产环境连接策略 - 直接创建连接，不使用全局变量
-  client = new MongoClient(uri, options)
-  clientPromise = client.connect()
+  
+  return clientPromise
 }
 
 // 【重点】导出客户端连接Promise - 在模块间共享数据库连接
 // 通过在独立模块中导出，可以在不同函数间共享同一个客户端连接
-export default clientPromise
+export default function getClientPromise(): Promise<MongoClient> {
+  return initializeClient()
+}
 
 // 【重点】数据库辅助函数 - 获取数据库实例
 export async function getDatabase(): Promise<Db> {
   try {
-    const client = await clientPromise // 等待客户端连接完成
-    return client.db('wellLiCases') // 返回指定数据库实例
+    const client = await initializeClient() // 使用新的初始化函数
+    return client.db('wellicases') // 返回指定数据库实例（修正数据库名称）
   } catch (error) {
     // 【重点】连接错误处理 - 记录错误并抛出友好的错误信息
     console.error('Failed to connect to database:', error)
@@ -69,17 +94,20 @@ export const COLLECTIONS = {
 export async function testConnection(retries = 3): Promise<boolean> {
   for (let i = 0; i < retries; i++) {
     try {
-      const client = await clientPromise // 获取客户端连接
+      const client = await initializeClient() // 使用新的初始化函数
       await client.db('admin').command({ ping: 1 }) // 发送ping命令测试连接
       console.log('✅ MongoDB connection successful') // 连接成功
       return true
     } catch (error) {
-      console.error(`❌ MongoDB connection attempt ${i + 1} failed:`, error)
+      console.error(`❌ MongoDB connection attempt ${i + 1} failed:`, (error as Error).message) // 简化错误信息
       if (i === retries - 1) {
         // 【重点】所有重试都失败 - 记录最终失败状态
         console.error('❌ All MongoDB connection attempts failed')
+        console.warn('⚠️ This might be due to SSL/TLS compatibility issues on Windows')
+        console.warn('⚠️ The application will continue without database connection')
         return false
       }
+      // 【重点】等待后重试 - 递增延迟避免频繁重试
       // 【重点】等待后重试 - 递增延迟避免频繁重试
       await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)))
     }

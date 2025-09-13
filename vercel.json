@@ -4,22 +4,12 @@
   "framework": "nextjs",
   "installCommand": "npm install",
   "devCommand": "npm run dev",
-  "env": {
-    "MONGODB_URI": "@mongodb_uri",
-    "SMTP_HOST": "@smtp_host",
-    "SMTP_PORT": "@smtp_port",
-    "SMTP_USER": "@smtp_user",
-    "SMTP_PASS": "@smtp_pass",
-    "SMTP_FROM": "@smtp_from",
-    "SMTP_TO": "@smtp_to",
-    "NEXTAUTH_SECRET": "@nextauth_secret",
-    "NEXTAUTH_URL": "@nextauth_url",
-    "NEXT_PUBLIC_SITE_URL": "@next_public_site_url",
-    "NEXT_PUBLIC_COMPANY_NAME": "@next_public_company_name",
-    "NEXT_PUBLIC_COMPANY_EMAIL": "@next_public_company_email",
-    "NEXT_PUBLIC_COMPANY_PHONE": "@next_public_company_phone",
-    "NEXT_PUBLIC_COMPANY_ADDRESS": "@next_public_company_address"
+  "functions": {
+    "src/app/api/**/*.ts": {
+      "maxDuration": 30
+    }
   },
+  "regions": ["sin1"],
   "headers": [
     {
       "source": "/(.*)",

@@ -5,6 +5,9 @@
  * Run this script to set up the database with initial data and indexes
  */
 
+// 加载环境变量
+require('dotenv').config({ path: '.env.local' })
+
 import { seedDatabase, checkAndSeedDatabase } from '../lib/seed-data'
 import { initializeDatabase, testConnection } from '../lib/mongodb'
 

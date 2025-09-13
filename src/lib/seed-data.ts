@@ -16,9 +16,9 @@ export const sampleProducts: Omit<Product, '_id' | 'createdAt' | 'updatedAt'>[] 
     description: 'Ultra-lightweight and virtually unbreakable protective case for small equipment.', // 简短描述
     longDescription: 'The NANUK 910 is designed for professionals who demand the highest level of protection for their valuable equipment. Built with NK-7 resin, this case offers superior impact resistance while maintaining a lightweight profile.', // 详细描述
     images: [ // 产品图片列表
-      '/images/products/nanuk-910-1.jpg', // 主要产品图片
-      '/images/products/nanuk-910-2.jpg', // 侧面视图
-      '/images/products/nanuk-910-3.jpg'  // 内部结构图
+      '/images/products/military-case-1.svg', // 主要产品图片 - 使用现有SVG
+      '/images/products/industrial-case-1.svg', // 侧面视图
+      '/images/products/tool-case-1.svg'  // 内部结构图
     ],
     specifications: { // 【重点】产品技术规格 - 详细的技术参数
       'External Dimensions': '13.8" × 11.6" × 6.0" (35.1 × 29.5 × 15.2 cm)', // 外部尺寸
@@ -111,9 +111,9 @@ export const sampleProducts: Omit<Product, '_id' | 'createdAt' | 'updatedAt'>[] 
     description: 'Medium-sized professional case with customizable foam interior for versatile equipment protection.',
     longDescription: 'The NANUK 920 offers the perfect balance of size and protection for professional equipment. With its modular foam system and robust construction, it adapts to your specific needs.',
     images: [
-      '/images/products/nanuk-920-1.jpg',
-      '/images/products/nanuk-920-2.jpg',
-      '/images/products/nanuk-920-3.jpg'
+      '/images/products/industrial-case-1.svg',
+      '/images/products/electronics-case-1.svg',
+      '/images/products/camera-case-1.svg'
     ],
     specifications: {
       'External Dimensions': '16.7" × 13.0" × 6.9" (42.4 × 33.0 × 17.5 cm)',
@@ -410,9 +410,9 @@ export const sampleProducts: Omit<Product, '_id' | 'createdAt' | 'updatedAt'>[] 
     description: 'Large heavy-duty case designed for maximum protection of valuable and sensitive equipment.',
     longDescription: 'The NANUK 930 is built for the most demanding environments. Its robust construction and advanced protection features make it the choice for military, aerospace, and industrial applications.',
     images: [
-      '/images/products/nanuk-930-1.jpg',
-      '/images/products/nanuk-930-2.jpg',
-      '/images/products/nanuk-930-3.jpg'
+      '/images/products/military-case-1.svg',
+      '/images/products/industrial-case-1.svg',
+      '/images/products/electronics-case-1.svg'
     ],
     specifications: {
       'External Dimensions': '18.8" × 14.6" × 7.6" (47.8 × 37.1 × 19.3 cm)',
@@ -502,8 +502,8 @@ export const sampleProducts: Omit<Product, '_id' | 'createdAt' | 'updatedAt'>[] 
     description: 'Specialized tool case with organized compartments for professional tool storage and transport.',
     longDescription: 'The NANUK 915 is specifically designed for tool organization and protection. Its intelligent layout and durable construction make it perfect for professionals who need their tools protected and organized.',
     images: [
-      '/images/products/nanuk-915-1.jpg',
-      '/images/products/nanuk-915-2.jpg'
+      '/images/products/tool-case-1.svg',
+      '/images/products/industrial-case-1.svg'
     ],
     specifications: {
       'External Dimensions': '15.0" × 12.0" × 6.5" (38.1 × 30.5 × 16.5 cm)',
@@ -587,9 +587,9 @@ export const sampleProducts: Omit<Product, '_id' | 'createdAt' | 'updatedAt'>[] 
     description: 'Fully customizable case solution designed to meet specific equipment protection requirements.',
     longDescription: 'The NANUK 925 Custom Case represents the pinnacle of personalized protection. Every aspect can be tailored to your exact specifications, ensuring perfect fit and maximum protection for your unique equipment.',
     images: [
-      '/images/products/nanuk-925-1.jpg',
-      '/images/products/nanuk-925-2.jpg',
-      '/images/products/nanuk-925-3.jpg'
+      '/images/products/camera-case-1.svg',
+      '/images/products/electronics-case-1.svg',
+      '/images/products/medical-case-1.svg'
     ],
     specifications: {
       'External Dimensions': 'Customizable',
@@ -676,8 +676,8 @@ export const sampleProducts: Omit<Product, '_id' | 'createdAt' | 'updatedAt'>[] 
     description: 'Large wheeled case for easy transport of heavy equipment with maximum protection.',
     longDescription: 'The NANUK 940 combines the ultimate in protection with convenient mobility. Its robust wheel system and telescoping handle make transporting heavy, valuable equipment effortless.',
     images: [
-      '/images/products/nanuk-940-1.jpg',
-      '/images/products/nanuk-940-2.jpg'
+      '/images/products/industrial-case-1.svg',
+      '/images/products/military-case-1.svg'
     ],
     specifications: {
       'External Dimensions': '22.0" × 17.5" × 10.0" (55.9 × 44.5 × 25.4 cm)',

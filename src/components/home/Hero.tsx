@@ -11,17 +11,17 @@ import { HiArrowRight, HiPlay } from 'react-icons/hi' // 箭头和播放图标
 // 这个数组控制首页大图轮播的内容
 const heroImages = [
   {
-    url: '/images/hero-1.svg', // 【修改入口】第一张图片路径（图片放在public/images/文件夹）
+    url: '/images/hero-1.jpg', // 【修改入口】第一张图片路径（图片放在public/images/文件夹）
     title: 'Reliable Protective Cases Manufacturer', // 【修改入口】第一张图的主标题
     subtitle: 'Customized Safety Cases for Global Clients' // 【修改入口】第一张图的副标题
   },
   {
-    url: '/images/hero-2.svg', // 【修改入口】第二张图片路径
+    url: '/images/hero-2.jpg', // 【修改入口】第二张图片路径
     title: 'Professional Grade Protection', // 【修改入口】第二张图的主标题
     subtitle: 'Waterproof & Dustproof Solutions' // 【修改入口】第二张图的副标题
   },
   {
-    url: '/images/hero-3.svg', // 【修改入口】第三张图片路径
+    url: '/images/hero-3.jpg', // 【修改入口】第三张图片路径
     title: 'Custom Manufacturing Excellence', // 【修改入口】第三张图的主标题
     subtitle: 'Tailored Cases for Every Industry' // 【修改入口】第三张图的副标题
   }
@@ -34,10 +34,10 @@ export default function Hero() {
 
   // 【重点】自动轮播功能 - 相当于"自动翻页器"
   useEffect(() => {
-    // 设置定时器，每5秒自动切换到下一张图片
+    // 设置定时器，每10秒自动切换到下一张图片
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length) // 循环播放，到最后一张后回到第一张
-    }, 5000) // 5000毫秒 = 5秒
+    }, 10000) // 10000毫秒 = 10秒
 
     // 组件销毁时清除定时器，避免内存泄漏
     return () => clearInterval(timer)

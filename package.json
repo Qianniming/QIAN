@@ -14,32 +14,38 @@
     "test:deployment": "node test-deployment.js",
     "test:all": "npm run test:security && npm run test:deployment",
     "type-check": "tsc --noEmit",
-    "deploy:check": "npm run lint && npm run type-check && npm run test:security"
+    "deploy:check": "npm run lint && npm run type-check && npm run test:security",
+    "deploy:env": "node scripts/generate-env-vars.js",
+    "deploy:test": "npm run build && npm run start",
+    "vercel:build": "next build",
+    "vercel:start": "next start",
+    "quick-start": "node scripts/quick-start.js"
   },
   "dependencies": {
+    "@next/font": "^14.0.0",
+    "dotenv": "^17.2.2",
+    "framer-motion": "^10.16.0",
+    "mongodb": "^6.3.0",
     "next": "^14.0.0",
+    "next-intl": "^3.0.0",
+    "nodemailer": "^6.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@next/font": "^14.0.0",
-    "mongodb": "^6.3.0",
-    "nodemailer": "^6.9.0",
     "react-icons": "^4.12.0",
-    "framer-motion": "^10.16.0",
-    "react-intersection-observer": "^9.5.0",
-    "next-intl": "^3.0.0"
+    "react-intersection-observer": "^9.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "@types/nodemailer": "^6.4.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "@types/nodemailer": "^6.4.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.0.0",
     "postcss": "^8.4.0",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5.0.0",
-    "tsx": "^4.6.0"
+    "tsx": "^4.6.0",
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -45,25 +45,25 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Li Wei',
     position: 'CEO & Founder',
-    image: '/images/team/ceo.jpg',
+    image: '/images/hero/hero-1.svg',
     description: 'With over 20 years of experience in manufacturing, Li Wei founded WELL-LI to revolutionize protective case solutions.'
   },
   {
     name: 'Zhang Ming',
     position: 'Chief Technology Officer',
-    image: '/images/team/cto.jpg',
+    image: '/images/hero/hero-2.svg',
     description: 'Leading our R&D team with expertise in materials science and innovative design solutions.'
   },
   {
     name: 'Wang Hua',
     position: 'Quality Director',
-    image: '/images/team/quality.jpg',
+    image: '/images/hero/hero-3.svg',
     description: 'Ensuring every product meets the highest international standards with rigorous quality control processes.'
   },
   {
     name: 'Chen Lu',
     position: 'International Sales Manager',
-    image: '/images/team/sales.jpg',
+    image: '/images/products/industrial-case-1.svg',
     description: 'Building global partnerships and delivering exceptional customer service worldwide.'
   }
 ]
@@ -240,7 +240,7 @@ export default function AboutPageClient() {
             <div className="relative">
               <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-200">
                 <img
-                  src="/images/about/factory.jpg"
+                  src="/images/hero/hero-1.jpg"
                   alt="WELL-LI Manufacturing Facility"
                   className="w-full h-full object-cover"
                 />

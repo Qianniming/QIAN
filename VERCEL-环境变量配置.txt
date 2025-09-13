@@ -1,0 +1,54 @@
+🔐 Vercel环境变量配置
+请将以下配置添加到Vercel项目设置中：
+
+======== 数据库配置 ========
+MONGODB_URI
+mongodb+srv://766282480qnm_db_user:13195622840Qbb@weili-website.x7cdvcd.mongodb.net/wellicases?retryWrites=true&w=majority&appName=WEILI-website
+
+======== 邮件配置（QQ邮箱） ========
+SMTP_HOST
+smtp.qq.com
+
+SMTP_PORT
+587
+
+SMTP_USER
+76682480@qq.com
+
+SMTP_PASS
+hiaayhcafgdubeij
+
+SMTP_FROM
+76682480@qq.com
+
+SMTP_TO
+admin@well-li.com
+
+======== 安全配置 ========
+NEXTAUTH_SECRET
+8b5b4003eb2d7bcebd1cc78af0680e6ba5b230f0a3168aca0589a634925d244e
+
+NEXTAUTH_URL
+https://你的项目名.vercel.app
+
+======== 网站配置 ========
+NEXT_PUBLIC_SITE_URL
+https://你的项目名.vercel.app
+
+NEXT_PUBLIC_COMPANY_NAME
+WELL-LI Plastic Products Co., Ltd.
+
+NEXT_PUBLIC_COMPANY_EMAIL
+contact@well-li.com
+
+NEXT_PUBLIC_COMPANY_PHONE
++86-xxx-xxxx-xxxx
+
+NEXT_PUBLIC_COMPANY_ADDRESS
+你的公司地址
+
+======== 说明 ========
+1. 请将 "your-email@gmail.com" 替换为你的实际Gmail地址
+2. 请将 "your-gmail-app-password" 替换为你的Gmail应用密码
+3. 请将 "你的项目名.vercel.app" 替换为实际的Vercel项目URL
+4. 请填写真实的公司电话和地址信息

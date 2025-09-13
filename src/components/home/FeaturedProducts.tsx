@@ -22,7 +22,7 @@ const featuredProducts = [
     id: 'nanuk-910-protective-case', // 产品唯一标识，用于页面跳转
     name: 'NANUK 910 Protective Case', // 【可修改】产品名称
     category: 'Small Cases', // 【可修改】产品分类
-    image: '/images/products/nanuk-910-1.jpg', // 【可修改】产品图片路径
+    image: '/images/products/military-case-1.svg', // 【可修改】产品图片路径
     price: 'Contact for Quote', // 【可修改】产品价格
     description: 'Ultra-lightweight and virtually unbreakable protective case for small equipment.', // 【可修改】产品描述
     features: [ // 【可修改】产品特点列表
@@ -42,7 +42,7 @@ const featuredProducts = [
     id: 'nanuk-920-professional-case',
     name: 'NANUK 920 Professional Case',
     category: 'Medium Cases',
-    image: '/images/products/nanuk-920-1.jpg',
+    image: '/images/products/industrial-case-1.svg',
     price: 'Contact for Quote',
     description: 'Medium-sized professional case with customizable foam interior for versatile equipment protection.',
     features: [
@@ -122,7 +122,7 @@ const featuredProducts = [
     id: 'nanuk-925-custom-case',
     name: 'NANUK 925 Custom Case',
     category: 'Custom Cases',
-    image: '/images/products/nanuk-925-1.jpg',
+    image: '/images/products/tool-case-1.svg',
     price: 'Contact for Quote',
     description: 'Fully customizable case solution designed to meet specific equipment protection requirements.',
     features: [
