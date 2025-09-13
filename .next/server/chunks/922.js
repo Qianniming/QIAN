@@ -1,1 +1,0 @@
-"use strict";exports.id=922,exports.ids=[922],exports.modules={922:(t,e,r)=>{r.r(e),r.d(e,{default:()=>s});let s=(0,r(8570).createProxy)(String.raw`E:\nanuk\src\app\products\ProductsPageClient.tsx#default`)}};

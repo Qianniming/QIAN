@@ -9,7 +9,7 @@ const nextConfig = {
   // output: 'standalone', // 注释掉，Vercel自动处理
   // 🖼️ 图片优化配置 - Vercel优化
   images: {
-    domains: ['localhost', 'vercel.app', 'your-domain.vercel.app'], // 允许的外部图片域名
+    domains: ['localhost', 'vercel.app', 'weili.vercel.app'], // 允许的外部图片域名
     formats: ['image/webp', 'image/avif'], // 支持的现代图片格式
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
