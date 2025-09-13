@@ -48,7 +48,8 @@ NEXT_PUBLIC_COMPANY_ADDRESS
 你的公司地址
 
 ======== 说明 ========
-1. 请将 "your-email@gmail.com" 替换为你的实际Gmail地址
-2. 请将 "your-gmail-app-password" 替换为你的Gmail应用密码
-3. 请将 "你的项目名.vercel.app" 替换为实际的Vercel项目URL
-4. 请填写真实的公司电话和地址信息
+✅ 邮箱配置模式：自发自收（发送方和接收方都是76682480@qq.com）
+1. 请将 "你的项目名.vercel.app" 替换为实际的Vercel项目URL（如：https://qian-ten.vercel.app）
+2. 请填写真实的公司电话和地址信息
+3. QQ邮箱自发自收模式有助于测试邮件功能正常工作
+4. 线上环境中联系表单将发送邮件到76682480@qq.com
