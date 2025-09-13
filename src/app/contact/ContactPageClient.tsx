@@ -11,7 +11,6 @@ import {
   HiClock,
   HiGlobeAlt,
   HiOfficeBuilding,
-  HiUser,
   HiChatAlt,
   HiCheckCircle
 } from 'react-icons/hi'

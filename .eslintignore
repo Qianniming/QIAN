@@ -1,0 +1,56 @@
+# ESLint 忽略文件配置
+# 详细说明：这些文件和目录不需要进行ESLint检查
+
+# 构建输出目录
+.next/
+out/
+dist/
+build/
+
+# 依赖目录
+node_modules/
+
+# 缓存和临时文件
+.cache/
+.tmp/
+tmp/
+
+# 配置文件
+*.config.js
+*.config.ts
+next.config.js
+next.config.ts
+tailwind.config.js
+tailwind.config.ts
+postcss.config.js
+
+# 测试文件（如果有的话）
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+test-*.js
+test-*.ts
+
+# 文档和示例文件
+README.md
+CHANGELOG.md
+*.md
+
+# 环境变量文件
+.env*
+
+# 其他工具生成的文件
+.eslintcache
+.stylelintcache
+
+# TypeScript 编译输出
+*.d.ts
+
+# 数据文件
+*.json
+!package.json
+!tsconfig.json
+
+# Vercel 部署文件
+.vercel/

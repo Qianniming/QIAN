@@ -5,15 +5,11 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { 
   HiOfficeBuilding, 
-  HiUsers, 
   HiGlobeAlt, 
-  HiAcademicCap,
   HiShieldCheck,
   HiLightBulb,
   HiHeart,
-  HiTrendingUp,
-  HiStar,
-  HiCheckCircle
+  HiTrendingUp
 } from 'react-icons/hi'
 
 interface TeamMember {

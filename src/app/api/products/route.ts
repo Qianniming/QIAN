@@ -144,7 +144,7 @@ export async function GET(request: NextRequest) {
       // 数据库连接失败，使用模拟数据
       console.warn('⚠️  Database connection failed, using fallback data:', dbError)
       
-      let fallbackData = getFallbackData()
+      const fallbackData = getFallbackData()
       
       // 对模拟数据应用筛选器
       if (category && category !== 'all') {

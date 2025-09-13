@@ -49,7 +49,7 @@ interface Category {
 interface ProductFilterProps {
   categories: Category[] // 分类列表
   selectedCategory: string // 当前选中的分类
-  onCategoryChange: (category: string) => void // 分类改变时的回调函数
+  onCategoryChange: (_category: string) => void // 分类改变时的回调函数
 }
 
 // 【重点】价格范围选项 - 【可修改】这里定义了价格筛选的选项
@@ -218,13 +218,13 @@ export default function ProductFilter({ categories, selectedCategory, onCategory
 interface FilterContentProps {
   categories: Category[] // 产品分类列表
   selectedCategory: string // 当前选中的分类ID
-  onCategoryChange: (category: string) => void // 分类改变时的回调函数
+  onCategoryChange: (_category: string) => void // 分类改变时的回调函数
   selectedFeatures: string[] // 已选择的产品特性列表
-  toggleFeature: (featureId: string) => void // 切换特性选择的函数
+  toggleFeature: (_featureId: string) => void // 切换特性选择的函数
   selectedPriceRange: string // 当前选中的价格范围
-  setSelectedPriceRange: (range: string) => void // 设置价格范围的函数
+  setSelectedPriceRange: (_range: string) => void // 设置价格范围的函数
   selectedProtection: string[] // 已选择的防护等级列表
-  toggleProtection: (protectionId: string) => void // 切换防护等级选择的函数
+  toggleProtection: (_protectionId: string) => void // 切换防护等级选择的函数
   clearAllFilters: () => void // 清除所有筛选条件的函数
   hasActiveFilters: boolean // 是否有激活的筛选条件
 }

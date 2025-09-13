@@ -1,3 +1,51 @@
 {
-  "extends": ["next/core-web-vitals"]
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    // 允许在JSX中使用未转义的引号和撇号，这对中英文混排很常见
+    "react/no-unescaped-entities": "off",
+    
+    // 允许使用 <img> 标签，但在生产环境建议使用 Next.js Image 组件
+    "@next/next/no-img-element": "warn",
+    
+    // React 相关规则
+    "react/jsx-no-undef": "error",
+    "react/jsx-uses-react": "off", // React 17+ 不需要导入 React
+    "react/react-in-jsx-scope": "off", // React 17+ 不需要导入 React
+    
+    // 对于API路由和脚本文件，允许使用console.log进行调试
+    "no-console": ["warn", { 
+      "allow": ["warn", "error", "info"] 
+    }],
+    "no-debugger": "warn",
+    "prefer-const": "warn",
+    
+    // 放宽未使用变量的检查，允许以下划线开头的变量
+    "no-unused-vars": ["warn", { 
+      "argsIgnorePattern": "^_",
+      "varsIgnorePattern": "^_",
+      "ignoreRestSiblings": true
+    }]
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "overrides": [
+    {
+      // 对于API路由、脚本和配置文件，放宽一些限制
+      "files": ["src/app/api/**/*.ts", "src/scripts/**/*.ts", "src/lib/**/*.ts", "*.config.js", "*.config.ts"],
+      "rules": {
+        "no-console": "off",
+        "no-unused-vars": "off"
+      }
+    }
+  ]
 }

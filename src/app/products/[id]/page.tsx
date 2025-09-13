@@ -10,7 +10,6 @@ import {
   HiDownload,
   HiShieldCheck,
   HiCube,
-  HiColorSwatch,
   HiCog,
   HiStar,
   HiChevronLeft,
@@ -164,7 +163,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
   const handleInquiry = () => {
     // Navigate to contact page with product information
-    const productInfo = {
+    const _productInfo = {
       name: product.name,
       model: product.id,
       category: product.category

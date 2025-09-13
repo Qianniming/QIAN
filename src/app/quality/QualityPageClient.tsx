@@ -8,7 +8,6 @@ import {
   HiBeaker, 
   HiClipboardCheck,
   HiCog,
-  HiGlobe,
   HiAcademicCap,
   HiStar,
   HiCheckCircle,

@@ -45,7 +45,7 @@ function initializeClient(): Promise<MongoClient> {
   if (process.env.NODE_ENV === 'development') {
     // 【重点】开发环境连接策略 - 使用全局变量避免热重载时重复连接
     // 在开发模式下，使用全局变量保存连接，避免HMR（热模块替换）导致的重复连接
-    let globalWithMongo = global as typeof globalThis & {
+    const _globalWithMongo = global as typeof globalThis & {
       _mongoClientPromise?: Promise<MongoClient>
     }
 

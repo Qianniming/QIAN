@@ -22,7 +22,7 @@ SMTP_FROM
 18756283766@163.com
 
 SMTP_TO
-18756283766@163.com
+766282480@qq.com
 
 ======== 安全配置 ========
 NEXTAUTH_SECRET
